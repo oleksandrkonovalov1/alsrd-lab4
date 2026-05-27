@@ -18,7 +18,7 @@
 import {
   Document, Packer, Paragraph, TextRun, Header,
   AlignmentType, PageNumber, HeadingLevel,
-  PageBreak, BorderStyle, ShadingType,
+  BorderStyle, ShadingType,
 } from "docx";
 import { readFileSync, writeFileSync, readdirSync } from "fs";
 import { execSync } from "child_process";
@@ -248,11 +248,8 @@ const titlePageParagraphs = [
 // ─── BODY ───────────────────────────────────────────────────────────
 
 const bodyParagraphs = [
-  // Body starts on new page (after title)
-  new Paragraph({ children: [new PageBreak()] }),
-
   // Sections 1-3 flow together
-  sectionHeading("1", "Мета роботи"),
+  sectionHeading("1", "Мета роботи", { pageBreakBefore: true }),
   bodyParagraph("Навчитися реалізовувати алгоритми обходу графів, представлених різними способами."),
 
   sectionHeading("2", "Завдання"),
